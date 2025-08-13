@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leva & Traz Petshop</title>
+  <meta name="description" content="Serviço de leva e traz para petshop: seguro, rápido e com carinho." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='48' x='6' font-size='48'>🐾</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">
+        <span class="logo">🐾</span>
+        <span class="brand-text">Leva & Traz Pet</span>
+      </div>
+      <nav>
+        <a href="#servicos">Serviços</a>
+        <a href="#planos">Planos</a>
+        <a href="#agendar">Agendar</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contato" class="btn btn-outline">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="overlay"></div>
+      <div class="container hero-content">
+        <h1>Leva & Traz com carinho e segurança</h1>
+        <p>Transporte especializado para seu pet até o petshop, veterinário ou onde precisar.</p>
+        <div class="hero-cta">
+          <a href="#agendar" class="btn btn-primary">Agendar agora</a>
+          <a href="#servicos" class="btn btn-ghost">Conhecer serviços</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- BADGES -->
+    <section class="badges container">
+      <div class="badge">Motoristas treinados</div>
+      <div class="badge">Veículos higienizados</div>
+      <div class="badge">Rastreamento em tempo real</div>
+      <div class="badge">Seguro incluso</div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section id="servicos" class="container section">
+      <h2>Serviços</h2>
+      <div class="grid3">
+        <article class="card">
+          <img loading="lazy" alt="Cão feliz no carro" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop" />
+          <div class="card-body">
+            <h3>Leva & Traz Petshop</h3>
+            <p>Buscamos e entregamos seu pet para banho, tosa ou compras no petshop parceiro.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img loading="lazy" alt="Gato sendo levado" src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?q=80&w=1200&auto=format&fit=crop" />
+          <div class="card-body">
+            <h3>Leva & Traz Vet</h3>
+            <p>Transporte com cuidado extra para consultas e procedimentos veterinários.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img loading="lazy" alt="Cachorros em passeio" src="https://images.unsplash.com/photo-1558944351-c0f6b7d9f42e?q=80&w=1200&auto=format&fit=crop" />
+          <div class="card-body">
+            <h3>Rotas Programadas</h3>
+            <p>Planos semanais e mensais com horários fixos para sua comodidade.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PLANOS -->
+    <section id="planos" class="section alt">
+      <div class="container">
+        <h2>Planos e Preços</h2>
+        <div class="grid3">
+          <div class="pricing">
+            <h3>Avulso</h3>
+            <p class="price">R$ 39</p>
+            <ul>
+              <li>Até 5 km</li>
+              <li>1 pet</li>
+              <li>Tempo médio: 30 min</li>
+            </ul>
+          </div>
+          <div class="pricing featured">
+            <h3>Mensal</h3>
+            <p class="price">R$ 139</p>
+            <ul>
+              <li>4 corridas/mês</li>
+              <li>Prioridade no agendamento</li>
+              <li>Desconto em extras</li>
+            </ul>
+          </div>
+          <div class="pricing">
+            <h3>Empresas</h3>
+            <p class="price">Sob consulta</p>
+            <ul>
+              <li>Condições especiais</li>
+              <li>Faturamento mensal</li>
+              <li>Relatórios</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENDAR (Vue.js) -->
+    <section id="agendar" class="container section">
+      <h2>Agendar transporte</h2>
+      <div class="booking">
+        <form @submit.prevent="handleSubmit" class="form">
+          <div class="form-row">
+            <label>Nome do tutor
+              <input v-model.trim="form.tutor" type="text" placeholder="Seu nome" required />
+            </label>
+            <label>Telefone/WhatsApp
+              <input v-model.trim="form.phone" type="tel" placeholder="(00) 00000-0000" required />
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Pet
+              <input v-model.trim="form.pet" type="text" placeholder="Nome do pet" required />
+            </label>
+            <label>Tipo
+              <select v-model="form.type" required>
+                <option value="cachorro">Cachorro</option>
+                <option value="gato">Gato</option>
+                <option value="outro">Outro</option>
+              </select>
+            </label>
+            <label>Porte
+              <select v-model="form.size" required>
+                <option value="pequeno">Pequeno</option>
+                <option value="medio">Médio</option>
+                <option value="grande">Grande</option>
+              </select>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Data
+              <input v-model="form.date" type="date" required />
+            </label>
+            <label>Hora
+              <input v-model="form.time" type="time" required />
+            </label>
+            <label>Distância (km)
+              <input v-model.number="form.distance" type="number" min="1" max="50" step="0.5" required />
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Origem
+              <input v-model.trim="form.from" type="text" placeholder="Endereço de retirada" required />
+            </label>
+            <label>Destino
+              <input v-model.trim="form.to" type="text" placeholder="Endereço de entrega" required />
+            </label>
+          </div>
+          <fieldset class="extras">
+            <legend>Extras</legend>
+            <label><input type="checkbox" v-model="form.extras.banho" /> Banho (R$ 30)</label>
+            <label><input type="checkbox" v-model="form.extras.tosa" /> Tosa (R$ 35)</label>
+            <label><input type="checkbox" v-model="form.extras.rastreamento" /> Rastreamento (R$ 10)</label>
+          </fieldset>
+
+          <div class="summary">
+            <div>
+              <div class="summary-row"><span>Base</span><strong>{{ currency(basePrice) }}</strong></div>
+              <div class="summary-row"><span>Porte</span><strong>{{ currency(sizeFee) }}</strong></div>
+              <div class="summary-row"><span>Distância ({{ form.distance || 0 }} km)</span><strong>{{ currency(distanceFee) }}</strong></div>
+              <div class="summary-row" v-if="extrasTotal > 0"><span>Extras</span><strong>{{ currency(extrasTotal) }}</strong></div>
+              <div class="summary-total"><span>Total estimado</span><strong>{{ currency(total) }}</strong></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Confirmar Agendamento</button>
+          </div>
+        </form>
+
+        <div v-if="lastBooking" class="receipt">
+          <h3>Agendamento confirmado 🎉</h3>
+          <p><strong>{{ lastBooking.pet }}</strong> será buscado em <strong>{{ lastBooking.from }}</strong> e levado até <strong>{{ lastBooking.to }}</strong>.</p>
+          <p>Data: {{ formatDate(lastBooking.date) }} às {{ lastBooking.time }} • Estimativa: {{ currency(lastBooking.total) }}</p>
+          <p>Enviamos os detalhes para: {{ lastBooking.phone }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section alt">
+      <div class="container">
+        <h2>Perguntas frequentes</h2>
+        <details>
+          <summary>Como funciona o leva e traz?</summary>
+          <p>Agende pelo site, informando data, horário e endereços. Um motorista parceiro buscará seu pet e o levará com segurança.</p>
+        </details>
+        <details>
+          <summary>Posso acompanhar o trajeto?</summary>
+          <p>Sim, oferecemos rastreamento por link (extra opcional).</p>
+        </details>
+        <details>
+          <summary>Quais cidades atendem?</summary>
+          <p>Atendimento regional com expansão contínua. Consulte a disponibilidade no agendamento.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="container section">
+      <h2>Contato</h2>
+      <div class="contact">
+        <p>E-mail: <a href="mailto:contato@levaetrazpet.com.br">contato@levaetrazpet.com.br</a></p>
+        <p>WhatsApp: <a href="https://wa.me/5500000000000" target="_blank" rel="noopener">+55 (00) 00000-0000</a></p>
+        <p>Instagram: <a href="https://instagram.com" target="_blank" rel="noopener">@levaetrazpet</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Leva & Traz Pet — Feito com ❤️ para os pets.</p>
+    </div>
+  </footer>
+
+  <!-- Vue.js -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <!-- App -->
+  <script src="./js/app.js"></script>
+</body>
+</html>
